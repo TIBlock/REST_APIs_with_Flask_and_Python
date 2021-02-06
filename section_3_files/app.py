@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, render_template
 
 app = Flask(__name__)
 stores = [
@@ -12,6 +12,11 @@ stores = [
         ] 
     }
 ]
+
+@app.route('/')
+def home():
+    return render_template('index.html')
+
 # POST = used to reveive data
 # GET = used to send data back only 
 
