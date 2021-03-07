@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, request
 from flask_restful import Resource, Api
 
 app = Flask(__name__)
@@ -14,11 +14,17 @@ class Item(Resource):
         return {'item': 'none'}, 404
 
     def post(self, name):
+        data = request.get_json()
         item = {'name': name, 'price': 12.00}
         items.append(item)
         return item, 201
 
 
-api.add_resource(Item, '/item/<string:name>') #http://127.0.0.1:5000/item/Rolf
+class ItemList(Resource):
+    def get(self):
+        return {'items': items}
 
-app.run(port=5000)
+
+api.add_resource(Item, '/item/<string:name>')
+api.add_resouces(ItemList, '/items') 
+app.run(port=5000, debug=True)
