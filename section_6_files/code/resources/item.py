@@ -29,7 +29,7 @@ class Item(Resource):
 
         data = Item.parser.parse_args()
 
-        item = ItemModel{name, data['price']}
+        item = ItemModel(name, data['price'])
 
         try:
             item.insert(item)
