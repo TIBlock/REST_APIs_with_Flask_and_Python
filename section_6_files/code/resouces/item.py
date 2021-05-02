@@ -36,7 +36,7 @@ class Item(Resource):
         except:
             return {'message': "An error occured inserting the item."}, 500
 
-        return item, 201
+        return item.json(), 201
 
 
     @jwt_required()
