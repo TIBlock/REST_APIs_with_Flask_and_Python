@@ -7,7 +7,7 @@ from resources.user import UserRegister
 from resources.item import ItemList, Item
 
 app = Flask(__name__)
-app.config['PROPAGATE_EXCEPTIONS'] = True # To allow flask propagating exception even if debug is set to false on app
+# app.config['PROPAGATE_EXCEPTIONS'] = True # To allow flask propagating exception even if debug is set to false on app
 app.secret_key = 'jose'
 api = Api(app)
 
